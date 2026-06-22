@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -26,17 +27,27 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Message Board</h1>
-      <input 
-        value={inputValue} 
-        onChange={(e) => setInputValue(e.target.value)} 
-        placeholder="Type something..."
-      />
-      <button onClick={sendMessage}>Send to Backend</button>
-      
-      <ul>
-        {messages.map((m, i) => <li key={i}>{m}</li>)}
+    <div className="app-container">
+      <h1 className="app-title">Message Board</h1>
+
+      <div className="input-row">
+        <input
+          className="message-input"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Type something..."
+        />
+        <button className="send-button" onClick={sendMessage}>
+          Send
+        </button>
+      </div>
+
+      <ul className="message-list">
+        {messages.map((m, i) => (
+          <li className="message-item" key={i}>
+            {m}
+          </li>
+        ))}
       </ul>
     </div>
   );
